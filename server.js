@@ -28,7 +28,7 @@ var router = express.Router();
 
 router.use(function(req, res, next) {
     console.log('Something is happen here!');
-    console.log("Iniciando a app na porta " + port);
+    //console.log("Iniciando a app na porta " + port);
     next();
 });
 
@@ -127,7 +127,7 @@ app.use('/api', router);
 
 //iniciando a aplicação.
 app.listen(process.env.PORT || 5000)
-console.log("Iniciando a app na porta (local) " + port);
+//console.log("Iniciando a app na porta (local) " + port);
 
 
 
