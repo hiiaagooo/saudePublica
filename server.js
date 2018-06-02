@@ -21,13 +21,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //definindo a porta de execução.
-var port = process.env.port || 8000;
+var port = process.env.port || 5000;
 
 // * lembrar que criar classe "routes" é uma boa prática.
 var router = express.Router();
 
 router.use(function(req, res, next) {
     console.log('Something is happen here!');
+    console.log("Iniciando a app na porta " + port);
     next();
 });
 
