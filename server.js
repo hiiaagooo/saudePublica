@@ -93,6 +93,7 @@ router.route('/formulario')
 
         //Setando os campos do Formulário (via request).
         //formulario.id = req.body.id;
+        formulario.id = req.body.id;
         formulario.nome = req.body.nome;
         formulario.sexo = req.body.sexo;
         formulario.idade = req.body.idade;
@@ -141,6 +142,7 @@ router.route('/formulario')
                 res.send('Erro ao buscar dados.' + error)
 
             // Segundo, coletar dados respectivos do ID.
+            formulario.id = req.body.id;
             formulario.nome = req.body.nome;
             formulario.sexo = req.body.sexo;
             formulario.idade = req.body.idade;
