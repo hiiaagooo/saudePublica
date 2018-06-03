@@ -13,7 +13,7 @@ var FormularioSchema = new Schema({
     nome: String,
     sexo: String,
     idade: Number,
-    endereço: String,
+    endereco: String,
     sintomas: String,
     medico: String
 });
