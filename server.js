@@ -42,7 +42,17 @@ app.use(function (req, res, next) {
     next();
 });
 
-var cors=require('cors');
+var express = require('express'),
+    cors = require('cors'),
+    app = express();
+
+
+var corsOptions = {
+    origin: '*'
+};
+app.use(cors(corsOptions));
+
+var cors = require('cors');
 app.use(cors({origin:true,credentials: true}));
 
 // * lembrar que criar classe "routes" é uma boa prática.
