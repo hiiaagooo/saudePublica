@@ -20,6 +20,26 @@ mongoose.connect('mongodb://hforte:Devil110110@ds016718.mlab.com:16718/node-crud
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
 // * lembrar que criar classe "routes" é uma boa prática.
 var router = express.Router();
 
@@ -34,9 +54,7 @@ router.get('/', function(req, res) {
     res.json({ message: 'Formulário - DrTis' })
 });
 
-// API'S.
-//===========================================================================
-
+// API.
 router.route('/formulario')
 
     // 1) Método: Criar Produto (acessar em: POST http://localhost:8000/api/formulario)  
@@ -53,7 +71,7 @@ router.route('/formulario')
 
         formulario.save(function(error) {
             if(error)
-                res.send('Erro ao salvar o candidato' + error);
+                res.send('Erro ao salvar o paciente' + error);
 
         res.json({ message: 'Paciente cadastrado com sucesso.'});
         });
@@ -123,10 +141,16 @@ router.route('/formulario')
         );
     })
 
-    //definindo o padrão das rotas (prefixadas em '/api').
+// definindo a rota para o FrontEnd 
+router.get('*', function(req, res) {
+// Carrega nossa view formulario.html que será a única da nossa aplicação
+    res.sendfile('./public/index.html');
+});
+
+// definindo o padrão das rotas (prefixadas em '/api').
 app.use('/api', router); 
 
-//iniciando a aplicação e definindo a porta.
+// iniciando a aplicação e definindo a porta.
 app.listen(process.env.PORT || 5000)
 
 
