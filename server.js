@@ -13,15 +13,12 @@ mongoose.Promisse = global.Promisse;
 //URI: Mlab (aws)
 mongoose.connect('mongodb://hforte:Devil110110@ds016718.mlab.com:16718/node-crud-api');
 
-//URI: mongodb
+//URI: mongodb (local)
 //mongodb.connect('mongobd://localhost:27017/node-crud-api');
 
 // configurando a variável app para usar o 'bodyParser'.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-//definindo a porta de execução.
-//var port = process.env.port || 5000;
 
 // * lembrar que criar classe "routes" é uma boa prática.
 var router = express.Router();
@@ -50,13 +47,15 @@ router.route('/formulario')
         formulario.nome = req.body.nome;
         formulario.sexo = req.body.sexo;
         formulario.idade = req.body.idade;
+        formulario.endereco = req.body.endereco;
+        formulario.sintomas = req.body.sintomas;
         formulario.medico = req.body.medico;
 
         formulario.save(function(error) {
             if(error)
                 res.send('Erro ao salvar o candidato' + error);
 
-        res.json({ message: 'Formulário cadastrado com sucesso.'});
+        res.json({ message: 'Paciente cadastrado com sucesso.'});
         });
     })
 
@@ -64,7 +63,7 @@ router.route('/formulario')
     .get(function(req, res) {
         Formulario.find(function(error, formulario){
             if(error)
-                res.send('Erro ao buscar dados.' + error)
+                res.send('Erro ao buscar Paciente.' + error)
 
         res.json(formulario)
         })
@@ -78,7 +77,7 @@ router.route('/formulario')
     .get(function(req, res) {
         Formulario.findById(req.params.formulario_id, function(error, formulario){
             if(error)
-                res.send('Canditato não encontrado.' + error)
+                res.send('Paciente não encontrado.' + error)
 
         res.json(formulario);
         })
@@ -96,6 +95,8 @@ router.route('/formulario')
             formulario.nome = req.body.nome;
             formulario.sexo = req.body.sexo;
             formulario.idade = req.body.idade;
+            formulario.endereco = req.body.endereco;
+            formulario.sintomas = req.body.sintomas;
             formulario.medico = req.body.medico;
 
             // Terceiro, gravar alterações.
@@ -125,9 +126,9 @@ router.route('/formulario')
     //definindo o padrão das rotas (prefixadas em '/api').
 app.use('/api', router); 
 
-//iniciando a aplicação.
+//iniciando a aplicação e definindo a porta.
 app.listen(process.env.PORT || 5000)
-//console.log("Iniciando a app na porta (local) " + port);
+
 
 
 

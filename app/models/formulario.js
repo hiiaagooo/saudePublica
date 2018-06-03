@@ -7,17 +7,14 @@ var Schema = mongoose.Schema;
 
 /**
  * Classe Formulario
- * Id int
- * nome string
- * sexo string
- * idade number
- * medico string
 **/
 
 var FormularioSchema = new Schema({
     nome: String,
     sexo: String,
     idade: Number,
+    endereço: String,
+    sintomas: String,
     medico: String
 });
 
