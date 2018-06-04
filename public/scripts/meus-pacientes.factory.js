@@ -19,10 +19,11 @@ angular.module("filmes").factory("MeusFilmes", function($q, $http){
         inserir: function(filme) {
             delete filme.id;
 
-            return $http.post("https://ancient-garden-50515.herokuapp.com/api/pacientes/", filme).then((response) => {
-                debugger ;
-                return response.config.data;
-            });
+            return $http.post("https://ancient-garden-50515.herokuapp.com/api/pacientes/", filme)
+        },
+
+        remover: function(id) {
+            return $http.delete("https://ancient-garden-50515.herokuapp.com/api/pacientes/", id)
         }
     }
 });
