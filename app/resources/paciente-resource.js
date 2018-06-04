@@ -25,7 +25,7 @@ class PacienteResource {
             let consulta = new Consulta(req.body);
             this.dao.save(consulta).then((consultaSalva) => {
                 if (consulta !== undefined) {
-                    res.status(200).json(consulta);
+                    res.status(200).json(consulta.toObject());
                 }
             }).catch((err) => {
                 res.status(400).json({
