@@ -1,0 +1,72 @@
+﻿<html ng-app="filmes">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/pacientes.controller.js"></script>
+    <script src="scripts/paciente.directive.js"></script>
+    <script src="scripts/meus-pacientes.factory.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="FilmesController">
+        <h1>{{ titulo }}</h1>
+        <h3 style="color:#0d7b1e">Registro de entrada de pacientes no ambulatório.</h3>
+
+        <form name="formulario" class="form-filmes" ng-submit="criarPaciente()">
+            <h1>Adicionar Paciente</h1>
+            <div class="form-campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" ng-model="novoPaciente.nome">
+            </div>
+            <div class="form-campo pequeno">
+                <label for="sexo">Sexo</label><br>
+                <select type="text" id="sexo" name="sexo" ng-model="novoPaciente.sexo">
+                    <option value="">Selecione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+            </div>
+            <div class="form-campo medio">
+                <label for="idade">Idade</label>
+                <input type="number" id="idade" name="idade" ng-model="novoPaciente.idade">
+            </div>
+            <div class="form-campo">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" ng-model="novoPaciente.endereco">
+            </div>
+            <div class="form-campo">
+                <label for="sintomas">Sintomas</label>
+                <textarea id="sintomas" name="sintomas" ng-model="novoPaciente.sintomas" rows="5"></textarea>
+            </div>
+            <br>
+            <div class="form-campo">
+                <label for="medico">Médico Responsável</label>
+                <input id="medico" name="medico" ng-model="novoPaciente.medico" rows="5"></input>
+            </div>
+
+            <footer>
+                <button type="reset">Limpar</button>
+                <button type="submit">Salvar</button>
+            </footer>
+        </form>
+      
+
+        <form class="form-filmesPDF">
+            <footer>
+                <buttonPDF type="buttonPDF" class="btn btn-danger" id="btnPDF">Gerar PDF</buttonPDF>
+            </footer>
+        </form>
+
+        
+        <h3>Pacientes já cadastrados e encaminhados.</h3>
+        <div class="lista-filmes">
+            <div aw-filme="f" fn-fechar="removerFilme(f.id)" ng-repeat="f in filmes"></div>
+        </div>
+    </div>
+
+</body>
+</html>

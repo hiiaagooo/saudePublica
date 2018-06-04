@@ -25,6 +25,7 @@ api.use(function (req, res, next) {
     next();
 });
 
+app.use(express.static(__dirname + '/public'));
 app.use('/api', api);
 app.use('/', api);
 api.use('/pacientes', new PacienteResource().router);
