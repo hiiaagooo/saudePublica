@@ -57,14 +57,14 @@
 
         <form class="form-filmesPDF">
             <footer>
-                <buttonPDF href="#" onclick="HTMLtoPDF()"   type="buttonPDF" class="btn btn-danger" id="btnPDF">Gerar PDF</buttonPDF>
+                <buttonPDF href="#" onclick="HTMLtoPDF()" type="buttonPDF" class="btn btn-danger" id="btnPDF">Gerar PDF</buttonPDF>
             </footer>
         </form>
-
-        
-        <h3>Pacientes já cadastrados e encaminhados.</h3>
-        <div class="lista-filmes">
-            <div aw-filme="f" fn-fechar="removerFilme(f.id)" ng-repeat="f in filmes"></div>
+        <div  id="HTMLtoPDF">
+            <h3>Pacientes já cadastrados e encaminhados.</h3>
+            <div class="lista-filmes">
+                <div aw-filme="f" fn-fechar="removerFilme(f.id)" ng-repeat="f in filmes"></div>
+            </div>
         </div>
     </div>
 
