@@ -3,7 +3,7 @@ angular.module("filmes").factory("MeusFilmes", function($q, $http){
         listar: function() {
             var promessa = $q.defer();
 
-            $http.get("http://localhost:5000/api/pacientes/").then(
+            $http.get("https://ancient-garden-50515.herokuapp.com/api/pacientes/").then(
                 function(result){
                     var filmes = [];
                     angular.forEach(result.data, function(filme, id){
@@ -19,7 +19,7 @@ angular.module("filmes").factory("MeusFilmes", function($q, $http){
         inserir: function(filme) {
             delete filme.id;
 
-            return $http.post("http://localhost:5000/api/pacientes/", filme).then((response) => {
+            return $http.post("https://ancient-garden-50515.herokuapp.com/api/pacientes/", filme).then((response) => {
                 debugger ;
                 return response.config.data;
             });
