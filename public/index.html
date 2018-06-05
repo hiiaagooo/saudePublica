@@ -86,7 +86,7 @@
     <div  id="HTMLtoPDF">
         <h3>Pacientes já cadastrados e encaminhados.</h3>
         <div class="lista-filmes">
-            <div aw-filme="f" fn-fechar="removerFilme(f.id)" ng-repeat="f in filmes"></div>
+            <div aw-filme="f" fn-fechar="removerFilme(f.id)" ng-repeat="f in filmes | orderBy : 'updatedAt'"></div>
         </div>
     </div>
 </div>

@@ -3,18 +3,17 @@
     .module('filmes')
     .controller('FilmesController', function($scope, MeusFilmes) {
       $scope.titulo = "Controle de Pacientes";
-
       $scope.filmes = [];
 	  
-	  var carregarPacientes = function() {
-		MeusFilmes.listar().then(function(filmes){
-			$scope.filmes = filmes;
-			console.log('dados', filmes);
-		});
+			var carregarPacientes = function() {
+			MeusFilmes.listar().then(function(filmes){
+				$scope.filmes = filmes;
+				console.log('dados', filmes);
+			});
 	  }
 
 		$scope.novoPaciente = {};
-			
+		
 		$scope.resetForm = function() {
 			$scope.formulario.$setPristine();
 			$scope.formulario.$setUntouched();
@@ -36,23 +35,23 @@
 				medico: $scope.novoPaciente.medico
 			};
 
-	MeusFilmes.inserir(filme).then(carregarPacientes);
-			alert('Obrigado!');
-			$scope.novoPaciente = {};
-			$scope.resetForm();
-	}
-	 
-	$scope.removerFilme = function(id) {
-		angular.forEach($scope.filmes, function(filme, i){
-			if(filme.id == id){
-				$scope.filmes.splice(i, 1);
-				alert('Paciente excluído!');
-			};
-		});
-	}
-	carregarPacientes();
-	
-	});
+			MeusFilmes.inserir(filme).then(carregarPacientes);
+					alert('Obrigado!');
+					$scope.novoPaciente = {};
+					$scope.resetForm();
+		}
+		
+		$scope.removerFilme = function(id) {
+			angular.forEach($scope.filmes, function(filme, i){
+				if(filme.id == id){
+					$scope.filmes.splice(i, 1);
+					alert('Paciente excluído!');
+				};
+			});
+		}
+		carregarPacientes();
 
+	});
+	
 })();
 
