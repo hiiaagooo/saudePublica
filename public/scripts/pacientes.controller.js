@@ -15,7 +15,17 @@
 
       $scope.novoPaciente = {};
 
+			$scope.resetForm = function() {
+				$scope.formulario.$setPristine();
+				$scope.formulario.$setUntouched();
+			}
+
       $scope.criarPaciente = function() {
+				$scope.formulario.$setDirty();
+
+				if ($scope.formulario.$invalid)
+					return;
+
       	var filme = {
       		id: Date.now() + "",
       		nome: $scope.novoPaciente.nome,

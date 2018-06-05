@@ -1,12 +1,12 @@
 ﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
 <div id="HTMLtoPDF">
     <h1>{{ filme.nome }}</h1>
-    <button class="del" title="Excluir" ng-click="fnFechar()"></button>
+    <button class="del" title="Excluir Paciente" ng-click="fnFechar()"></button>
     <img ng-if="filme.cartaz" ng-src="{{ filme.cartaz }}" alt="Cartaz {{ filme.titulo }}">
     <ul>
-        <li><strong>Paciente:</strong> {{ filme.nome }}</li>
         <li><strong>Gênero:</strong> {{ filme.sexo }}</li>
         <li><strong>Idade:</strong> {{ filme.idade }}</li>
         <li><strong>Endereço:</strong> {{ filme.endereco }}</li>

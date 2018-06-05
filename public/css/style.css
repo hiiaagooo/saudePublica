@@ -169,3 +169,7 @@ buttonPDF {
 .form-filmes button[type="reset"]:hover {
 	background-color: #CCD1D9;
 }
+
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+	border-color: #F99;
+}
